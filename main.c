@@ -6,21 +6,22 @@
 int main(void){
  //TODO: Implementar codigo de empleo
  char archivo[] = "ventas.dat";
- FILE * fp = fopen(archivo, "r");
+ FILE * fp = fopen(archivo, "rb");
  if(fp == NULL){
   printf("Error: No se pudo leer %s\n", archivo);
   return 1;
  }
- 
+
  char tmpNom[64];
  float tmpPre;
  int num_articulos = 0;
  articulo_t articulos[16];
-
- while(fscanf(fp, "%s %f", tmpNom, &tmpPre) > 0){
-  articulos[num_articulos++] = leerArticulo(tmpNom, tmpPre);
+ while(!feof(fp)){
+  if(fread(&articulos[num_articulos], sizeof(articulo_t), 1, fp) > 0){
+   num_articulos++;
+  }
  }
- 
+
  int cont = 1;
  int opcion;
  while(cont){
@@ -29,7 +30,7 @@ int main(void){
    puts("1.) Ventas\n2.) Inventorio\n3.) Salir\nOpcion: ");
    scanf(" %d", &opcion);
   }
-  
+
 
  switch(opcion){
   case 1:
