@@ -10,6 +10,12 @@ typedef struct articulo_t{
  int cantidad;
 }articulo_t;
 
-void menuVentas(articulo_t * articulos, int numArt);
+typedef struct carrito_t{
+ int tiposArt;
+ int articulos[64];
+ int cantidades[64];
+}carrito_t;
+
+void menuVentas(articulo_t * articulos, int numArt, carrito_t  * carrito);
 
 #endif

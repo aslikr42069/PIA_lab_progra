@@ -22,6 +22,13 @@ int main(void){
   }
  }
 
+ carrito_t carrito;
+ carrito.tiposArt = 0;
+ for(int i = 0; i < 64; i++){
+  carrito.articulos[i] = 0;
+  carrito.cantidades[i] = 0;
+ }
+
  int cont = 1;
  int opcion;
  while(cont){
@@ -30,11 +37,10 @@ int main(void){
    puts("1.) Ventas\n2.) Inventorio\n3.) Salir\nOpcion: ");
    scanf(" %d", &opcion);
   }
-
-
+ 
  switch(opcion){
   case 1:
-   menuVentas(articulos, num_articulos);
+   menuVentas(articulos, num_articulos, &carrito);
    break;
   case 2:
    break;
