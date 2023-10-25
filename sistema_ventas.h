@@ -18,4 +18,6 @@ typedef struct carrito_t{
 
 void menuVentas(articulo_t * articulos, int numArt, carrito_t  * carrito);
 
+void menuInventario(articulo_t * articulos, int * numArt);
+
 #endif
