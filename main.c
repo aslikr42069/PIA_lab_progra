@@ -6,14 +6,13 @@
 int main(void){
  //TODO: Implementar codigo de empleo
  char archivo[] = "ventas.dat";
+ char masterContra[] = "mollerGeo";
  FILE * fp = fopen(archivo, "rb");
  if(fp == NULL){
   printf("Error: No se pudo leer %s\n", archivo);
   return 1;
  }
 
- char tmpNom[64];
- float tmpPre;
  int num_articulos = 0;
  articulo_t articulos[20];
  while(!feof(fp)){
@@ -48,6 +47,22 @@ int main(void){
    break;
   case 2:
    rewind(fp);
+   int intentos = 3;
+   char contrasena[256];
+   contrasena[0] = '\0';
+   while(strncmp(contrasena, masterContra, strlen(masterContra)) != 0){
+    if(intentos <= 0){
+     break;
+    }
+    printf("Intentos Restantes: %d\nContrasena: ", intentos);
+    scanf(" %[^\n]", contrasena);
+    if(strncmp(contrasena, masterContra, strlen(masterContra)) != 0){
+     intentos--;
+    }
+   }
+   if(intentos <= 0){
+    break;
+   }
    menuInventario(articulos, &num_articulos);
    fwrite(articulos, sizeof(articulo_t), num_articulos, fp);
    break;

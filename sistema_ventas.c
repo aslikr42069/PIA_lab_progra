@@ -120,7 +120,7 @@ void menuInventario(articulo_t * articulos, int * numArt){
     break;
    case 3:
     puts("Cantidad en Inventario: ");
-    scanf(" %f", &articulos[articulo].cantidad);
+    scanf(" %d", &articulos[articulo].cantidad);
     break;
    case 4:
     break;
