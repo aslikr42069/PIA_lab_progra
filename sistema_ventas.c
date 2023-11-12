@@ -95,7 +95,7 @@ void menuInventario(articulo_t * articulos, int * numArt){
    printf("Cantidad de Articulo en el Inventario: ");
    scanf(" %d", &articulos[(*numArt)].cantidad);
    (*numArt)++;
-   break;
+   continue;
   }
 
   int articulo = opcion - 1;
